@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/workanator/go-ataman/ansi"
+	"github.com/workanator/go-ataman/decorate"
 )
 
 // Reset graphic mode sequence
@@ -25,8 +26,8 @@ func (rndr *Renderer) ansiSequence(attrs []string) (string, error) {
 }
 
 // ansiCode returns the ANSI numeric code of the attribute.
-func (rndr *Renderer) ansiCode(attr string) Attribute {
-	var code Attribute
+func (rndr *Renderer) ansiCode(attr string) decorate.Attribute {
+	var code decorate.Attribute
 
 	mods := strings.Split(attr, rndr.ModificatorDelimiter.String())
 	for _, mod := range mods {
@@ -35,7 +36,7 @@ func (rndr *Renderer) ansiCode(attr string) Attribute {
 		} else if mod == rndr.Negator.String() {
 			return ansi.Reset
 		} else {
-			return InvalidAttribute
+			return decorate.InvalidAttribute
 		}
 	}
 

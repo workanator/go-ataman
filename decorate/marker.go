@@ -1,4 +1,4 @@
-package generic
+package decorate
 
 // Marker contains rune sequence which identifies part of format tags.
 type Marker string

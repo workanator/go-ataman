@@ -19,6 +19,10 @@ basic decoration scheme.
 ```go
 rndr := ataman.NewRenderer(basic.Style())
 tpl := "<light:green>%s<green>, <b:light:yellow,black,bold> <<%s>> <-><red>!"
-fmt.Println(rndr.MustRenderf(tpl, "Hola!", "Mi Amigo"))
+fmt.Println(rndr.MustRenderf(tpl, "Hello", "Terminal World"))
 
 ```
+
+This example produces colored text like this.
+
+[![Example Output](https://s4.postimg.org/60xukhl71/2017-05-19_0.58.15.png)](https://postimg.org/image/s0497p215/)

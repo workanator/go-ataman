@@ -6,3 +6,19 @@
 The goal of the project is to help render colored text in terminal applications
 with text attribute manipulation contained in text template.
 The idea is similar to HTML, e.g. `<span style="color:green">Hello!</span>`
+
+## Installation
+
+To install the package use `go get github.com/workanator/go-ataman...`
+
+## Quick Example
+
+The next example shows basic usage of the package. The renderer here uses
+basic decoration scheme.
+
+```go
+rndr := ataman.NewRenderer(basic.Style())
+tpl := "<light:green>%s<green>, <b:light:yellow,black,bold> <<%s>> <-><red>!"
+fmt.Println(rndr.MustRenderf(tpl, "Hola!", "Mi Amigo"))
+
+```

@@ -23,7 +23,7 @@ type Renderer interface {
 
 	// Len returns the length of the text the user see in terminal. To achieve
 	// that the implementation of the iterface can remove all keywords from
-	// the original template for example. The method is usefull when proper
+	// the original template for example. The method is useful when proper
 	// alignemt in terminal is required.
 	Len(tpl string) (n int)
 

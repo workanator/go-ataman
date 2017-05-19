@@ -15,7 +15,7 @@ To install the package use `go get github.com/workanator/go-ataman...`
 ## Quick Example
 
 The next example shows basic usage of the package. The renderer here uses
-basic decoration scheme.
+basic decoration style.
 
 ```go
 rndr := ataman.NewRenderer(ataman.BasicStyle())
@@ -27,3 +27,21 @@ fmt.Println(rndr.MustRenderf(tpl, "Hello", "Terminal World"))
 This example produces colored text like this.
 
 [![Example Output](https://s24.postimg.org/cpl13bvp1/2017-05-19_15.56.34.png)](https://postimg.org/image/6onc6992p/)
+
+Renderer is able to pre-render templates so in further output operations they
+can be reused without parsing and rendering. In this example the renderer uses
+curly brackets decoration style.
+
+```go
+rndr := ataman.NewRenderer(ataman.CurlyStyle())
+prep := rndr.MustPrepare("{light_green}%s{-}, {bg_light_yellow+black+bold} <%s> {-}{red}!")
+fmt.Println(rndr.MustRenderf(tpl, "Hi", "Everybody"))
+```
+
+The pre-rendered template implements `fmt.Stringer` interface so it can be used
+in output operations without additional code, e.g.
+
+```go
+prep := rndr.MustPrepare("{red}Red {green}Green {blue}Blue{-}")
+fmt.Println(prep)
+```

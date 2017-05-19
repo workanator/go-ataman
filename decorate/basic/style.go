@@ -12,8 +12,8 @@ var (
 	modificatorDelimiter = decorate.NewMarker("+")
 	autoReset            = true
 	attributes           = map[string]decorate.Attribute{
-		"reset":      ansi.Reset,
 		"-":          ansi.Reset,
+		"reset":      ansi.Reset,
 		"bold":       ansi.Bold, // Font attributes
 		"underscore": ansi.Underscore,
 		"underline":  ansi.Underscore,

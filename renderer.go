@@ -1,5 +1,7 @@
 package ataman
 
+import "github.com/workanator/go-ataman/prepared"
+
 // Renderer does rendering of the text templates.
 type Renderer interface {
 	// Validate validates the template.
@@ -27,4 +29,12 @@ type Renderer interface {
 
 	// Lenf calculates and return the length of the formatted template.
 	Lenf(tpl string, args ...interface{}) (n int)
+
+	// Prepare prerenders the template given and returns the prepared render
+	// instance which can be used for rendering without direct access to
+	// the renderer it was produced with.
+	Prepare(tpl string) (pt prepared.Template, err error)
+
+	// MustPrepare prerenders the template and panics in case of parsing error.
+	MustPrepare(tpl string) (pt prepared.Template)
 }

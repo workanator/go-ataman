@@ -5,6 +5,7 @@ import (
 	"sync"
 
 	"github.com/workanator/go-ataman/decorate"
+	"github.com/workanator/go-ataman/prepared"
 )
 
 // Renderer implements generic configurable template renderer. Underlying pool
@@ -35,8 +36,8 @@ func (rndr *Renderer) Validate(tpl string) error {
 
 // Render renders the template given.
 func (rndr *Renderer) Render(tpl string) (string, error) {
-	buf := rndr.Pool.Get().(*bytesBuffer)
-	defer rndr.Pool.Put(buf)
+	buf := rndr.getBuffer()
+	defer rndr.putBuffer(buf)
 
 	err := rndr.renderTemplate(&tpl, buf)
 
@@ -45,8 +46,8 @@ func (rndr *Renderer) Render(tpl string) (string, error) {
 
 // MustRender renders the template and panics in case of error.
 func (rndr *Renderer) MustRender(tpl string) string {
-	buf := rndr.Pool.Get().(*bytesBuffer)
-	defer rndr.Pool.Put(buf)
+	buf := rndr.getBuffer()
+	defer rndr.putBuffer(buf)
 
 	if err := rndr.renderTemplate(&tpl, buf); err != nil {
 		panic(err)
@@ -84,4 +85,39 @@ func (rndr *Renderer) Len(tpl string) int {
 // Lenf calculates and return the length of the formatted template.
 func (rndr *Renderer) Lenf(tpl string, args ...interface{}) int {
 	return rndr.Len(fmt.Sprintf(tpl, args...))
+}
+
+// Prepare prerenders the template given.
+func (rndr *Renderer) Prepare(tpl string) (prepared.Template, error) {
+	buf := rndr.getBuffer()
+	defer rndr.putBuffer(buf)
+
+	err := rndr.renderTemplate(&tpl, buf)
+	if err != nil {
+		return nil, err
+	}
+
+	return preparedTemplate{tpl: buf.String()}, nil
+}
+
+// MustPrepare prerenders the template and panics in case of parsing error.
+func (rndr *Renderer) MustPrepare(tpl string) (pt prepared.Template) {
+	buf := rndr.getBuffer()
+	defer rndr.putBuffer(buf)
+
+	err := rndr.renderTemplate(&tpl, buf)
+	if err != nil {
+		panic(err)
+	}
+
+	return preparedTemplate{tpl: buf.String()}
+}
+
+func (rndr *Renderer) getBuffer() *bytesBuffer {
+	return rndr.Pool.Get().(*bytesBuffer)
+}
+
+func (rndr *Renderer) putBuffer(buf *bytesBuffer) {
+	buf.Buffer.Reset()
+	rndr.Pool.Put(buf)
 }

@@ -2,6 +2,7 @@
 **Another Text Attribute Manipulator**
 
 [![GoDoc](https://godoc.org/gopkg.in/workanator/go-ataman.v0?status.svg)](https://godoc.org/gopkg.in/workanator/go-ataman.v0)
+[![Go Report Card](https://goreportcard.com/badge/github.com/workanator/go-ataman)](https://goreportcard.com/report/github.com/workanator/go-ataman)
 
 The goal of the project is to help render colored text in terminal applications
 with text attribute manipulation contained in text template.

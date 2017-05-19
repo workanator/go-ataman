@@ -33,8 +33,6 @@ func (rndr *Renderer) ansiCode(attr string) decorate.Attribute {
 	for _, mod := range mods {
 		if a, ok := rndr.Attributes[mod]; ok {
 			code += a
-		} else if mod == rndr.Negator.String() {
-			return ansi.Reset
 		} else {
 			return decorate.InvalidAttribute
 		}

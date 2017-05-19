@@ -9,13 +9,14 @@ var (
 	tagOpen              = decorate.NewMarker("<")
 	tagClose             = decorate.NewMarker(">")
 	attributeDelimiter   = decorate.NewMarker(",")
-	modificatorDelimiter = decorate.NewMarker(":")
-	negator              = decorate.NewMarker("-")
+	modificatorDelimiter = decorate.NewMarker("+")
 	autoReset            = true
 	attributes           = map[string]decorate.Attribute{
 		"reset":      ansi.Reset,
+		"-":          ansi.Reset,
 		"bold":       ansi.Bold, // Font attributes
 		"underscore": ansi.Underscore,
+		"underline":  ansi.Underscore,
 		"blink":      ansi.Blink,
 		"reverse":    ansi.Reverse,
 		"conceal":    ansi.Concealed,
@@ -43,7 +44,6 @@ func Style() decorate.Style {
 		TagClose:             tagClose,
 		AttributeDelimiter:   attributeDelimiter,
 		ModificatorDelimiter: modificatorDelimiter,
-		Negator:              negator,
 		AutoReset:            autoReset,
 		Attributes:           attributes,
 	}

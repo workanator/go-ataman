@@ -78,7 +78,7 @@ func (rndr *Renderer) renderTemplate(tpl *string, buf stringWriter) error {
 		}
 	}
 
-	if rndr.AutoReset && buf.Len() > 0 {
+	if buf.Len() > 0 {
 		buf.WriteANSISequence(ansiResetSequence)
 	}
 

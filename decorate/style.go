@@ -7,5 +7,4 @@ type Style struct {
 	AttributeDelimiter   Marker
 	ModificatorDelimiter Marker
 	Attributes           map[string]Attribute
-	AutoReset            bool
 }

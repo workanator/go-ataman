@@ -10,7 +10,6 @@ var (
 	tagClose             = decorate.NewMarker("}")
 	attributeDelimiter   = decorate.NewMarker("+")
 	modificatorDelimiter = decorate.NewMarker("_")
-	autoReset            = true
 	attributes           = map[string]decorate.Attribute{
 		"-":          ansi.Reset,
 		"reset":      ansi.Reset,
@@ -37,14 +36,13 @@ var (
 	}
 )
 
-// Style returns the basic decoration style
+// Style returns the curly brackets decoration style.
 func Style() decorate.Style {
 	return decorate.Style{
 		TagOpen:              tagOpen,
 		TagClose:             tagClose,
 		AttributeDelimiter:   attributeDelimiter,
 		ModificatorDelimiter: modificatorDelimiter,
-		AutoReset:            autoReset,
 		Attributes:           attributes,
 	}
 }

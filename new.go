@@ -8,7 +8,5 @@ import (
 // NewRenderer creates the generic configurable renderer instance with
 // the decoration style given.
 func NewRenderer(style decorate.Style) Renderer {
-	return &generic.Renderer{
-		Style: style,
-	}
+	return generic.NewRenderer(style)
 }

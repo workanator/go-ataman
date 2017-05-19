@@ -2,13 +2,29 @@ package generic
 
 import (
 	"fmt"
+	"sync"
 
 	"github.com/workanator/go-ataman/decorate"
 )
 
-// Renderer implements generic configurable template renderer.
+// Renderer implements generic configurable template renderer. Underlying pool
+// is used for pooling string buffers and make the renderer thread safe.
 type Renderer struct {
 	decorate.Style
+	sync.Pool
+}
+
+// NewRenderer constructs the instance of generic renderer with the decoration
+// style given.
+func NewRenderer(style decorate.Style) *Renderer {
+	return &Renderer{
+		Style: style,
+		Pool: sync.Pool{
+			New: func() interface{} {
+				return new(bytesBuffer)
+			},
+		},
+	}
 }
 
 // Validate validates the template.
@@ -19,16 +35,20 @@ func (rndr *Renderer) Validate(tpl string) error {
 
 // Render renders the template given.
 func (rndr *Renderer) Render(tpl string) (string, error) {
-	var buf bytesBuffer
-	var err = rndr.renderTemplate(&tpl, &buf)
+	buf := rndr.Pool.Get().(*bytesBuffer)
+	defer rndr.Pool.Put(buf)
+
+	err := rndr.renderTemplate(&tpl, buf)
 
 	return buf.String(), err
 }
 
 // MustRender renders the template and panics in case of error.
 func (rndr *Renderer) MustRender(tpl string) string {
-	var buf bytesBuffer
-	if err := rndr.renderTemplate(&tpl, &buf); err != nil {
+	buf := rndr.Pool.Get().(*bytesBuffer)
+	defer rndr.Pool.Put(buf)
+
+	if err := rndr.renderTemplate(&tpl, buf); err != nil {
 		panic(err)
 	}
 

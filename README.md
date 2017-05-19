@@ -17,12 +17,12 @@ The next example shows basic usage of the package. The renderer here uses
 basic decoration scheme.
 
 ```go
-rndr := ataman.NewRenderer(basic.Style())
-tpl := "<light:green>%s<green>, <b:light:yellow,black,bold> <<%s>> <-><red>!"
+rndr := ataman.NewRenderer(ataman.BasicStyle())
+tpl := "<light+green>%s<->, <b+light+yellow,black,bold> <<%s>> <-><red>!"
 fmt.Println(rndr.MustRenderf(tpl, "Hello", "Terminal World"))
 
 ```
 
 This example produces colored text like this.
 
-[![Example Output](https://s4.postimg.org/60xukhl71/2017-05-19_0.58.15.png)](https://postimg.org/image/s0497p215/)
+[![Example Output](https://s24.postimg.org/cpl13bvp1/2017-05-19_15.56.34.png)](https://postimg.org/image/6onc6992p/)

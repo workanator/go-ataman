@@ -1,7 +1,7 @@
 # go-ataman
 **Another Text Attribute Manipulator**
 
-[![GoDoc](https://godoc.org/gopkg.in/workanator/go-ataman.v0?status.svg)](https://godoc.org/gopkg.in/workanator/go-ataman.v0)
+[![GoDoc](https://godoc.org/gopkg.in/workanator/go-ataman.v1?status.svg)](https://godoc.org/gopkg.in/workanator/go-ataman.v1)
 [![Go Report Card](https://goreportcard.com/badge/github.com/workanator/go-ataman)](https://goreportcard.com/report/github.com/workanator/go-ataman)
 
 The goal of the project is to help render colored text in terminal applications

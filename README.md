@@ -8,6 +8,17 @@ The goal of the project is to help render colored text in terminal applications
 with text attribute manipulation contained in text template.
 The idea is similar to HTML, e.g. `<span style="color:green">Hello!</span>`
 
+**ataman** is not a full-featured template processor. It aims only on simple
+terminal text attribute, graphic mode in ANSI terms, manipulations using
+ANSI sequences.
+
+## Features
+
+- Parsing and rendering template with single iteration.
+- Minimal memory allocations with pooling.
+- Thread-safe parsing and rendering.
+- Fully customizable decoration of tags.
+
 ## Installation
 
 To install the package use `go get github.com/workanator/go-ataman...`

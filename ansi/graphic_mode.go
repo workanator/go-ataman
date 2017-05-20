@@ -13,8 +13,7 @@ const (
 
 	// Bold makes font bold (or brighter)
 	Bold = 1
-	// Underscore (or underline) makes font underline. Supported only on
-	// monochrome displays.
+	// Underscore (or underline) makes font underline.
 	Underscore = 4
 	// Blink makes font blink
 	Blink = 5

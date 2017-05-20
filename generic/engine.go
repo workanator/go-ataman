@@ -7,8 +7,8 @@ import (
 
 // Render renders the template given.
 func (rndr *Renderer) renderTemplate(tpl *string, buf stringWriter) error {
-	var openSeq = rndr.TagOpen.String()
-	var closeSeq = rndr.TagClose.String()
+	var openSeq = rndr.style.TagOpen.String()
+	var closeSeq = rndr.style.TagClose.String()
 	var doubleClose = strings.Repeat(closeSeq, 2)
 
 	pos := 0
@@ -65,7 +65,7 @@ func (rndr *Renderer) renderTemplate(tpl *string, buf stringWriter) error {
 
 				// Get tag content and split to attribute list
 				content := (*tpl)[openIdx+1 : openIdx+closingIdx]
-				attributes := strings.Split(content, rndr.AttributeDelimiter.String())
+				attributes := strings.Split(content, rndr.style.AttributeDelimiter.String())
 
 				// Build ANSI sequence from attributes
 				sequnce, err := rndr.ansiSequence(attributes)

@@ -11,16 +11,16 @@ import (
 // Renderer implements generic configurable template renderer. Underlying pool
 // is used for pooling string buffers and make the renderer thread safe.
 type Renderer struct {
-	decorate.Style
-	sync.Pool
+	style decorate.Style
+	pool  sync.Pool
 }
 
 // NewRenderer constructs the instance of generic renderer with the decoration
 // style given.
 func NewRenderer(style decorate.Style) *Renderer {
 	return &Renderer{
-		Style: style,
-		Pool: sync.Pool{
+		style: style,
+		pool: sync.Pool{
 			New: func() interface{} {
 				return new(bytesBuffer)
 			},
@@ -114,10 +114,10 @@ func (rndr *Renderer) MustPrepare(tpl string) (pt prepared.Template) {
 }
 
 func (rndr *Renderer) getBuffer() *bytesBuffer {
-	return rndr.Pool.Get().(*bytesBuffer)
+	return rndr.pool.Get().(*bytesBuffer)
 }
 
 func (rndr *Renderer) putBuffer(buf *bytesBuffer) {
 	buf.Buffer.Reset()
-	rndr.Pool.Put(buf)
+	rndr.pool.Put(buf)
 }

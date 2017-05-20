@@ -29,9 +29,9 @@ func (rndr *Renderer) ansiSequence(attrs []string) (string, error) {
 func (rndr *Renderer) ansiCode(attr string) decorate.Attribute {
 	var code decorate.Attribute
 
-	mods := strings.Split(attr, rndr.ModificatorDelimiter.String())
+	mods := strings.Split(attr, rndr.style.ModificatorDelimiter.String())
 	for _, mod := range mods {
-		if a, ok := rndr.Attributes[mod]; ok {
+		if a, ok := rndr.style.Attributes[mod]; ok {
 			code += a
 		} else {
 			return decorate.InvalidAttribute

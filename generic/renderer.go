@@ -13,6 +13,7 @@ import (
 type Renderer struct {
 	style decorate.Style
 	pool  sync.Pool
+	mutex sync.Mutex
 }
 
 // NewRenderer constructs the instance of generic renderer with the decoration
@@ -25,6 +26,7 @@ func NewRenderer(style decorate.Style) *Renderer {
 				return new(bytesBuffer)
 			},
 		},
+		mutex: sync.Mutex{},
 	}
 }
 
@@ -114,10 +116,16 @@ func (rndr *Renderer) MustPrepare(tpl string) (pt prepared.Template) {
 }
 
 func (rndr *Renderer) getBuffer() *bytesBuffer {
+	rndr.mutex.Lock()
+	defer rndr.mutex.Unlock()
+
 	return rndr.pool.Get().(*bytesBuffer)
 }
 
 func (rndr *Renderer) putBuffer(buf *bytesBuffer) {
+	rndr.mutex.Lock()
+	defer rndr.mutex.Unlock()
+
 	buf.Buffer.Reset()
 	rndr.pool.Put(buf)
 }

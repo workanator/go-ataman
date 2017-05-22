@@ -10,7 +10,7 @@ var (
 	tagClose             = decorate.NewMarker(">")
 	attributeDelimiter   = decorate.NewMarker(",")
 	modificatorDelimiter = decorate.NewMarker("+")
-	attributes           = map[string]decorate.Attribute{
+	attributes           = map[string]ansi.Attribute{
 		"-":          ansi.Reset,
 		"reset":      ansi.Reset,
 		"bold":       ansi.Bold, // Font attributes

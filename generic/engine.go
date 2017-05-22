@@ -2,14 +2,23 @@ package generic
 
 import (
 	"errors"
+	"fmt"
 	"strings"
+
+	"github.com/workanator/go-ataman/ansi"
 )
+
+// Reset graphic mode sequence
+var ansiResetSequence = fmt.Sprintf("%s%d%s", ansi.SequenceStart, ansi.Reset, ansi.SequenceEnd)
 
 // Render renders the template given.
 func (rndr *Renderer) renderTemplate(tpl *string, buf stringWriter) error {
-	var openSeq = rndr.style.TagOpen.String()
-	var closeSeq = rndr.style.TagClose.String()
-	var doubleClose = strings.Repeat(closeSeq, 2)
+	var (
+		openSeq     = rndr.style.TagOpen.String()
+		closeSeq    = rndr.style.TagClose.String()
+		doubleClose = strings.Repeat(closeSeq, 2)
+		writtenANSI = false
+	)
 
 	pos := 0
 	for pos < len(*tpl) {
@@ -74,13 +83,44 @@ func (rndr *Renderer) renderTemplate(tpl *string, buf stringWriter) error {
 				}
 
 				buf.WriteANSISequence(sequnce)
+				writtenANSI = true
 			}
 		}
 	}
 
-	if buf.Len() > 0 {
+	if writtenANSI {
 		buf.WriteANSISequence(ansiResetSequence)
 	}
 
 	return nil
+}
+
+// ansiSequence produces ANSI sequence based on attribute list.
+func (rndr *Renderer) ansiSequence(attrs []string) (string, error) {
+	for i, attr := range attrs {
+		code := rndr.ansiCode(attr)
+		if !code.IsValid() {
+			return "", fmt.Errorf("invalid attribute %s", attr)
+		}
+
+		attrs[i] = fmt.Sprintf("%d", code)
+	}
+
+	return ansi.SequenceStart + strings.Join(attrs, ansi.SequenceDelimiter) + ansi.SequenceEnd, nil
+}
+
+// ansiCode returns the ANSI numeric code of the attribute.
+func (rndr *Renderer) ansiCode(attr string) ansi.Attribute {
+	var code ansi.Attribute
+
+	mods := strings.Split(attr, rndr.style.ModificatorDelimiter.String())
+	for _, mod := range mods {
+		if a, ok := rndr.style.Attributes[mod]; ok {
+			code += a
+		} else {
+			return ansi.InvalidAttribute
+		}
+	}
+
+	return code
 }

@@ -1,4 +1,4 @@
-package decorate
+package ansi
 
 // Attribute is the numerc code used in ANSI sequence.
 type Attribute int

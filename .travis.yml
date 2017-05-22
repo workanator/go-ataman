@@ -8,8 +8,9 @@ go:
 script:
   - go vet ./...
   - go build -v ./...
-  - go test -v ./ansi/*
-  - go test -v ./decorate/*
-  - go test -v ./decorate/basic/*
-  - go test -v ./decorate/curly/*
-  - go test -v ./generic/*
+  - go install -v
+  - go test -v ./ansi
+  - go test -v ./decorate
+  - go test -v ./decorate/basic
+  - go test -v ./decorate/curly
+  - go test -v ./generic

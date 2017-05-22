@@ -3,6 +3,7 @@
 
 [![GoDoc](https://godoc.org/gopkg.in/workanator/go-ataman.v1?status.svg)](https://godoc.org/gopkg.in/workanator/go-ataman.v1)
 [![Go Report Card](https://goreportcard.com/badge/github.com/workanator/go-ataman)](https://goreportcard.com/report/github.com/workanator/go-ataman)
+[![License](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/workanator/go-ataman/blob/master/LICENSE)
 
 The goal of the project is to help render colored text in terminal applications
 with text attribute manipulation contained in text template.

@@ -1,0 +1,15 @@
+language: go
+sudo: false
+
+go:
+  - 1.7
+  - 1.8
+
+script:
+  - go vet ./...
+  - go build -v ./...
+  - go test -v ./ansi/*_test.go
+  - go test -v ./decorate/*_test.go
+  - go test -v ./decorate/basic/*_test.go
+  - go test -v ./decorate/curly/*_test.go
+  - go test -v ./generic/*_test.go

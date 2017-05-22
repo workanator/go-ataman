@@ -2,6 +2,7 @@
 **Another Text Attribute Manipulator**
 
 [![GoDoc](https://godoc.org/gopkg.in/workanator/go-ataman.v1?status.svg)](https://godoc.org/gopkg.in/workanator/go-ataman.v1)
+[![Build Status](https://travis-ci.org/workanator/go-ataman.svg?branch=master)](https://travis-ci.org/workanator/go-ataman)
 [![Go Report Card](https://goreportcard.com/badge/github.com/workanator/go-ataman)](https://goreportcard.com/report/github.com/workanator/go-ataman)
 [![License](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/workanator/go-ataman/blob/master/LICENSE)
 

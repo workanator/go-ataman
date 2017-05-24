@@ -113,7 +113,7 @@ func (rndr *Renderer) ansiSequence(attrs []string) (string, error) {
 func (rndr *Renderer) ansiCode(attr string) ansi.Attribute {
 	var code ansi.Attribute
 
-	mods := strings.Split(attr, rndr.style.ModificatorDelimiter.String())
+	mods := strings.Split(attr, rndr.style.ModDelimiter.String())
 	for _, mod := range mods {
 		if a, ok := rndr.style.Attributes[mod]; ok {
 			code += a

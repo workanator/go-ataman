@@ -6,19 +6,19 @@ import (
 )
 
 var (
-	tagOpen              = decorate.NewMarker("<")
-	tagClose             = decorate.NewMarker(">")
-	attributeDelimiter   = decorate.NewMarker(",")
-	modificatorDelimiter = decorate.NewMarker("+")
+	tagOpen            = decorate.NewMarker("<")
+	tagClose           = decorate.NewMarker(">")
+	attributeDelimiter = decorate.NewMarker(",")
+	modDelimiter       = decorate.NewMarker("+")
 )
 
 // Style returns the basic decoration style.
 func Style() decorate.Style {
 	return decorate.Style{
-		TagOpen:              tagOpen,
-		TagClose:             tagClose,
-		AttributeDelimiter:   attributeDelimiter,
-		ModificatorDelimiter: modificatorDelimiter,
-		Attributes:           ansi.DefaultDict,
+		TagOpen:            tagOpen,
+		TagClose:           tagClose,
+		AttributeDelimiter: attributeDelimiter,
+		ModDelimiter:       modDelimiter,
+		Attributes:         ansi.DefaultDict,
 	}
 }

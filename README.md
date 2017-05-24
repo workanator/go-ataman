@@ -58,3 +58,36 @@ in output operations without additional code, e.g.
 prep := rndr.MustPrepare("{red}Red {green}Green {blue}Blue{-}")
 fmt.Println(prep)
 ```
+
+## Customizing Renderer
+
+The package allows to customize tag decorations what can be achieved through
+`decorate.Style` struct. The struct should be initialized with preferred
+values. For example with the code below we can define a decoration style
+like `[[bold,yellow]]Warning![[-]] [[intensive_white]]This package is awesome![[-]] :)`.
+
+```go
+style := decorate.Style{
+  TagOpen:            decorate.NewMarker("[["),
+  TagClose:           decorate.NewMarker("]]"),
+  AttributeDelimiter: decorate.NewMarker(","),
+  ModDelimiter:       decorate.NewMarker("-"),
+  Attributes:         ansi.DefaultDict,
+}
+
+rndr := ataman.NewRenderer(style)
+```
+
+The rules of decoration styles are the follows.
+
+- `TagOpen` is the sequence of runes which open tag.
+- `TagClose` is the sequence of runes which close tag.
+- `AttributeDelimiter` is the sequence of runes which delimits attributes
+  inside tag.
+- `ModDelimiter` is the sequence of runes which delimits modifiers
+  in attribute.
+- `Attributes` is the map of attributes, where key is the name of ANSI code
+  user uses in templates and value is the ANSI code used in ANSI sequence.
+
+It's recommended to use attribute codes defined in `ansi` package with the
+default Renderer provided by **ataman**.

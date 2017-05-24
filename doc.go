@@ -13,5 +13,18 @@ Here is the couple of examples to introduce the project.
     prep := rndr.MustPrepare("{light_green}%s{-}, {bg_light_yellow+blue+bold}%s{-}!")
     fmt.Println(prep.Format("Hello", "World"))
 
+Customization of decoration styles can be done through `decorate.Style`, e.g.
+
+    style := decorate.Style{
+      TagOpen:            decorate.NewMarker("[["),
+      TagClose:           decorate.NewMarker("]]"),
+      AttributeDelimiter: decorate.NewMarker(","),
+      ModDelimiter:       decorate.NewMarker("-"),
+      Attributes:         ansi.DefaultDict,
+    }
+
+    rndr := ataman.NewRenderer(style)
+    fmt.Println(rndr.MustRender("[[bold,yellow]]Warning![[-]] [[intensive_white]]This package is awesome![[-]] :)"))
+
 */
 package ataman

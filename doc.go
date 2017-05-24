@@ -16,15 +16,16 @@ Here is the couple of examples to introduce the project.
 Customization of decoration styles can be done through `decorate.Style`, e.g.
 
     style := decorate.Style{
-      TagOpen:            decorate.NewMarker("[["),
-      TagClose:           decorate.NewMarker("]]"),
+      TagOpen:            decorate.NewMarker("["),
+      TagClose:           decorate.NewMarker("]"),
       AttributeDelimiter: decorate.NewMarker(","),
       ModDelimiter:       decorate.NewMarker("-"),
       Attributes:         ansi.DefaultDict,
     }
 
     rndr := ataman.NewRenderer(style)
-    fmt.Println(rndr.MustRender("[[bold,yellow]]Warning![[-]] [[intensive_white]]This package is awesome![[-]] :)"))
+    tpl := "[bold,yellow]Warning![-] [intensive_white]This package is awesome![-]"
+    fmt.Println(rndr.MustRender(tpl))
 
 */
 package ataman

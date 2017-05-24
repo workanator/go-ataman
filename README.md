@@ -23,7 +23,7 @@ ANSI sequences.
 
 ## Installation
 
-To install the package use `go get github.com/workanator/go-ataman...`
+To install the package use `go get gopkg.in/workanator/go-ataman.v1`
 
 ## Quick Example
 

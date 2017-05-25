@@ -59,6 +59,50 @@ prep := rndr.MustPrepare("{red}Red {green}Green {blue}Blue{-}")
 fmt.Println(prep)
 ```
 
+## Writing Templates
+
+Templates follow the simple rules.
+
+- Tag can contain one or more attributes, e.g. `{white,bold}`, `{red}`.
+- If template should render open or close tag sequence as regular text then
+  the sequence should be doubled. For example, if tag is enclosed in `{` and `}`
+  then in template it should be `This rendered as {{regular text}}`.
+- Renderer adds reset graphic mode ANSI sequence to the each template if it
+  contains any other ANSI sequences. So visually those templates are equivalent
+  `{bold}Bold{-}` and `{bold}Bold`.
+
+Decoration styles use the follows dictionary.
+
+* `-` or `reset` stand for reset graphic mode.
+* `b` or `bold` make font bold.
+* `u` or `underscore` or `underline` make font underline.
+* `blink` makes font blink.
+* `reverse` swaps text and background colors.
+* `conceal` makes font concealed (whatever that means).
+* `black` color.
+* `red` color.
+* `green` color.
+* `yellow` color.
+* `blue` color.
+* `magenta` color.
+* `cyan` color.
+* `white` color.
+* `default` reverts to the default color.
+* `bg` or `background` should be used in conjunction with color to set
+  background color.
+* `intensive` or `light` should be used in conjunction with color to make
+  the color intensive. Could be used with `background` as well.
+
+Some template examples with curly decoration style.
+
+- `{light_green}` - makes text light (intensive) green.
+- `{bg_yellow}` - makes background yellow.
+- `{bold}` - makes font bold.
+- `{red,bg_blue}` - makes text red on blue background.
+- `{u,black,bg_intensive_white}` - makes text black with bold font on intensive
+  white background.
+- `{-}` - reset the current graphic mode.
+
 ## Customizing Renderer
 
 The package allows to customize tag decorations what can be achieved through

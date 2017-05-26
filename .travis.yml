@@ -18,3 +18,5 @@ script:
   - go test -v ./decorate/basic
   - go test -v ./decorate/curly
   - go test -v ./generic
+
+after_success: coveralls

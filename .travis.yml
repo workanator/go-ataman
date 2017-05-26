@@ -17,12 +17,16 @@ script:
   - go vet ./...
   - go build -v ./...
   - go install -v
-  - go test -v -covermode=count -coverprofile=coverage.out ./ansi
-  - go test -v -covermode=count -coverprofile=coverage-decorate.out ./decorate
-  - go test -v -covermode=count -coverprofile=coverage-decorate-basic.out ./decorate/basic
-  - go test -v -covermode=count -coverprofile=coverage-decorate-curly.out ./decorate/curly
-  - go test -v -covermode=count -coverprofile=coverage-generic.out ./generic
-  - cat coverage-*.out > coverage.out
+  - go test -v -covermode=count -coverprofile=coverage-tmp.out ./ansi
+  - cat coverage-tmp.out > coverage.out
+  - go test -v -covermode=count -coverprofile=coverage-tmp.out ./decorate
+  - sed -e '1d' < coverage-tmp.out >> coverage.out
+  - go test -v -covermode=count -coverprofile=coverage-tmp.out ./decorate/basic
+  - sed -e '1d' < coverage-tmp.out >> coverage.out
+  - go test -v -covermode=count -coverprofile=coverage-tmp.out ./decorate/curly
+  - sed -e '1d' < coverage-tmp.out >> coverage.out
+  - go test -v -covermode=count -coverprofile=coverage-tmp.out ./generic
+  - sed -e '1d' < coverage-tmp.out >> coverage.out
   - $HOME/gopath/bin/goveralls -coverprofile=coverage.out -service=travis-ci
 
 after_success:

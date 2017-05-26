@@ -5,6 +5,7 @@
 
 [![GoDoc](https://godoc.org/gopkg.in/workanator/go-ataman.v1?status.svg)](https://godoc.org/gopkg.in/workanator/go-ataman.v1)
 [![Build Status](https://travis-ci.org/workanator/go-ataman.svg?branch=master)](https://travis-ci.org/workanator/go-ataman)
+[![Coverage Status](https://coveralls.io/repos/github/workanator/go-ataman/badge.svg?branch=master)](https://coveralls.io/github/workanator/go-ataman?branch=master)
 [![Go Report Card](https://goreportcard.com/badge/github.com/workanator/go-ataman)](https://goreportcard.com/report/github.com/workanator/go-ataman)
 [![License](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/workanator/go-ataman/blob/master/LICENSE)
 

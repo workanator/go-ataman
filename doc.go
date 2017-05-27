@@ -65,7 +65,7 @@ Some template examples with curly decoration style.
   - `{bg_yellow}` - makes background yellow.
   - `{bold}` - makes font bold.
   - `{red,bg_blue}` - makes text red on blue background.
-  - `{u,black,bg_intensive_white}` - makes text black with bold font on
+  - `{u,black,bg_intensive_white}` - makes text black with underline font on
     intensive white background.
   - `{-}` - reset the current graphic mode.
 */

@@ -35,7 +35,7 @@ basic decoration style.
 
 ```go
 rndr := ataman.NewRenderer(ataman.BasicStyle())
-tpl := "<light+green>%s<->, <b+light+yellow,black,bold> <<%s>> <-><red>!"
+tpl := "<light+green>%s<->, <bg+light+yellow,black,bold> <<%s>> <-><red>!"
 fmt.Println(rndr.MustRenderf(tpl, "Hello", "Terminal World"))
 
 ```

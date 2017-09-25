@@ -1,8 +1,8 @@
 package ataman
 
 import (
-	"github.com/workanator/go-ataman/decorate"
-	"github.com/workanator/go-ataman/generic"
+	"gopkg.in/workanator/go-ataman.v1/decorate"
+	"gopkg.in/workanator/go-ataman.v1/generic"
 )
 
 // NewRenderer creates the generic configurable renderer instance with

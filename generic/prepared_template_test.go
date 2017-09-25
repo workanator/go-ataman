@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/workanator/go-ataman/decorate/basic"
+	"gopkg.in/workanator/go-ataman.v1/decorate/basic"
 )
 
 func TestPlainPreparedTemplate(t *testing.T) {

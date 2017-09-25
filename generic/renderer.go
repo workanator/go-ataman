@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/workanator/go-ataman/decorate"
-	"github.com/workanator/go-ataman/prepared"
+	"gopkg.in/workanator/go-ataman.v1/decorate"
+	"gopkg.in/workanator/go-ataman.v1/prepared"
 )
 
 // Renderer implements generic configurable template renderer. Underlying pool

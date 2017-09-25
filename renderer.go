@@ -1,6 +1,6 @@
 package ataman
 
-import "github.com/workanator/go-ataman/prepared"
+import "gopkg.in/workanator/go-ataman.v1/prepared"
 
 // Renderer does rendering of the text templates.
 type Renderer interface {
@@ -22,7 +22,7 @@ type Renderer interface {
 	MustRenderf(tpl string, args ...interface{}) (s string)
 
 	// Len returns the length of the text the user see in terminal. To achieve
-	// that the implementation of the iterface can remove all keywords from
+	// that the implementation of the interface can remove all keywords from
 	// the original template for example. The method is useful when proper
 	// alignemt in terminal is required.
 	Len(tpl string) (n int)
@@ -30,11 +30,11 @@ type Renderer interface {
 	// Lenf calculates and return the length of the formatted template.
 	Lenf(tpl string, args ...interface{}) (n int)
 
-	// Prepare prerenders the template given and returns the prepared render
+	// Prepare pre-renders the template given and returns the prepared render
 	// instance which can be used for rendering without direct access to
 	// the renderer it was produced with.
 	Prepare(tpl string) (pt prepared.Template, err error)
 
-	// MustPrepare prerenders the template and panics in case of parsing error.
+	// MustPrepare pre-renders the template and panics in case of parsing error.
 	MustPrepare(tpl string) (pt prepared.Template)
 }

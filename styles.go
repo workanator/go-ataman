@@ -1,9 +1,9 @@
 package ataman
 
 import (
-	"github.com/workanator/go-ataman/decorate"
-	"github.com/workanator/go-ataman/decorate/basic"
-	"github.com/workanator/go-ataman/decorate/curly"
+	"gopkg.in/workanator/go-ataman.v1/decorate"
+	"gopkg.in/workanator/go-ataman.v1/decorate/basic"
+	"gopkg.in/workanator/go-ataman.v1/decorate/curly"
 )
 
 // BasicStyle returns the basic decoration style.

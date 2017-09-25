@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/workanator/go-ataman/ansi"
+	"gopkg.in/workanator/go-ataman.v1/ansi"
 )
 
 // Reset graphic mode sequence

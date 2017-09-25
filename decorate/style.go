@@ -1,6 +1,6 @@
 package decorate
 
-import "github.com/workanator/go-ataman/ansi"
+import "gopkg.in/workanator/go-ataman.v1/ansi"
 
 // Style allows to make decoration style customizable.
 type Style struct {

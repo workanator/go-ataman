@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/workanator/go-ataman/generic"
+	"gopkg.in/workanator/go-ataman.v1/generic"
 )
 
 func TestDoubleTagMarker(t *testing.T) {

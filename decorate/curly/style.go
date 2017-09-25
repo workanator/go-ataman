@@ -1,8 +1,8 @@
 package curly
 
 import (
-	"github.com/workanator/go-ataman/ansi"
-	"github.com/workanator/go-ataman/decorate"
+	"gopkg.in/workanator/go-ataman.v1/ansi"
+	"gopkg.in/workanator/go-ataman.v1/decorate"
 )
 
 var (

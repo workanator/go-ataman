@@ -3,11 +3,13 @@ sudo: false
 
 os:
   - linux
-  - osx
 
 go:
   - 1.7
   - 1.8
+  - 1.9
+
+go_import_path: gopkg.in/workanator/go-ataman.v1
 
 install:
   - go get github.com/mattn/goveralls

@@ -1,4 +1,4 @@
-[![Gopher Ataman](https://s11.postimg.org/nnf914djn/gopher_ataman.png)](https://postimg.org/image/zcj8p34i7/)
+![Gopher Ataman](https://github.com/workanator/repo-faces/blob/main/go-ataman/main.png)
 
 # go-ataman
 **Another Text Attribute Manipulator**
